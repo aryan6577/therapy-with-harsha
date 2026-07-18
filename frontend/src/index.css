@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #7C9A92;
+  --secondary: #E9E2D8;
+  --background: #FAF7F2;
+  --text: #2E2E2E;
+  --accent: #B8A1D9;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+}
+html {
+  scroll-behavior: smooth;
+}
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}

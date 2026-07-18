@@ -1,0 +1,8 @@
+.book-btn {
+  transition: all 0.3s ease;
+}
+
+.book-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(95, 127, 118, 0.3);
+}
