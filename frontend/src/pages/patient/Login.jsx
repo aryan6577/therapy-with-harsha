@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-
+import API_URL from "../../config";
 function Login() {
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ function Login() {
     try {
       // Login Request
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${API_URL}/api/auth/login`,
         formData
       );
 
@@ -63,7 +63,7 @@ localStorage.setItem(
 // ==========================
 
 const profileRes = await axios.get(
-  "http://localhost:5000/api/patient/profile",
+  `${API_URL}/api/patient/profile`,
   {
     headers: {
       Authorization: `Bearer ${res.data.token}`,
