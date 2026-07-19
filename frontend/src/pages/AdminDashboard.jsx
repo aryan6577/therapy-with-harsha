@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import API_URL from "../config";
 
 import AdminLayout from "../components/admin/AdminLayout";
 
@@ -97,7 +98,7 @@ function AdminDashboard() {
       const appointmentRes =
         await axios.get(
 
-          "http://localhost:5000/api/appointment",
+          `${API_URL}/api/appointment`,
 
           config
 
@@ -106,7 +107,7 @@ function AdminDashboard() {
       const patientRes =
         await axios.get(
 
-          "http://localhost:5000/api/admin/patients",
+          `${API_URL}/api/admin/patients`,
 
           config
 
