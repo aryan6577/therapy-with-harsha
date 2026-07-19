@@ -38,7 +38,7 @@ const loadProfile = async () => {
     const token = localStorage.getItem("token");
 
     const res = await axios.get(
-      "http://localhost:5000/api/patient/profile",
+      "${API_URL}/api/patient/profile",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -105,7 +105,7 @@ setFormData({
 
       await axios.put(
 
-        "http://localhost:5000/api/patient/profile",
+        "${API_URL}/api/patient/profile",
 
         formData,
 

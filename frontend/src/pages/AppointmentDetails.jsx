@@ -28,7 +28,7 @@ function AppointmentDetails() {
       const res =
         await axios.get(
 
-          `http://localhost:5000/api/appointment/${id}`,
+          `${API_URL}/api/appointment/${id}`,
 
           {
 
@@ -449,7 +449,7 @@ function AppointmentDetails() {
 
             <img
 
-              src={`http://localhost:5000/${appointment.paymentScreenshot}`}
+              src={`${API_URL}/${appointment.paymentScreenshot}`}
 
               alt="Payment"
 
@@ -613,7 +613,7 @@ function AppointmentDetails() {
 
                 await axios.put(
 
-                  `http://localhost:5000/api/appointment/approve/${appointment._id}`,
+                  `${API_URL}/api/appointment/approve/${appointment._id}`,
 
                   {},
 
@@ -667,7 +667,7 @@ function AppointmentDetails() {
 
                 await axios.put(
 
-                  `http://localhost:5000/api/appointment/reject/${appointment._id}`,
+                  `${API_URL}/api/appointment/reject/${appointment._id}`,
 
                   {reason},
 
@@ -713,7 +713,7 @@ function AppointmentDetails() {
 
                 await axios.put(
 
-                  `http://localhost:5000/api/appointment/verify-payment/${appointment._id}`,
+                  `${API_URL}/api/appointment/verify-payment/${appointment._id}`,
 
                   {},
 
@@ -787,7 +787,7 @@ function AppointmentDetails() {
 
                 await axios.put(
 
-                  `http://localhost:5000/api/appointment/complete/${appointment._id}`,
+                  `${API_URL}/api/appointment/complete/${appointment._id}`,
 
                   {},
 

@@ -26,7 +26,7 @@ function ClinicalNotes() {
   const loadAppointment = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/appointment/${appointmentId}`
+        `${API_URL}/api/appointment/${appointmentId}`
       );
 
       setAppointment(res.data.appointment);
@@ -38,7 +38,7 @@ function ClinicalNotes() {
   const loadClinicalNote = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/clinical/${appointmentId}`
+        `${API_URL}/api/clinical/${appointmentId}`
       );
 
       if (res.data.note) {
@@ -57,7 +57,7 @@ function ClinicalNotes() {
   const saveNote = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/clinical/save",
+        "${API_URL}/api/clinical/save",
         {
           patient: appointment.patient._id,
           appointment: appointment._id,

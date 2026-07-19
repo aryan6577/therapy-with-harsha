@@ -118,20 +118,20 @@ function CalendarView() {
         ] = await Promise.all([
 
           axios.get(
-            "http://localhost:5000/api/holiday"
+            "${API_URL}/api/holiday"
           ),
 
           axios.get(
-            "http://localhost:5000/api/vacation"
+            "${API_URL}/api/vacation"
           ),
 
           axios.get(
-            "http://localhost:5000/api/blocked-slot"
+            "${API_URL}/api/blocked-slot"
           ),
 
           axios.get(
 
-            "http://localhost:5000/api/appointment",
+            "${API_URL}/api/appointment",
 
             {
 

@@ -26,7 +26,7 @@ function AdminVerifyOTP() {
       setLoading(true);
 
       const res = await axios.post(
-  "http://localhost:5000/api/password/verify-otp",
+  "${API_URL}/api/password/verify-otp",
   {
     email,
     otp,

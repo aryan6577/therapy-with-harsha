@@ -45,7 +45,7 @@ function VacationManager() {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/vacation"
+        "${API_URL}/api/vacation"
       );
 
       if (res.data.success) {
@@ -100,7 +100,7 @@ function VacationManager() {
 
       const res = await axios.post(
 
-        "http://localhost:5000/api/vacation",
+        "${API_URL}/api/vacation",
 
         form,
 
@@ -164,7 +164,7 @@ function VacationManager() {
 
       await axios.delete(
 
-        `http://localhost:5000/api/vacation/${id}`,
+        `${API_URL}/api/vacation/${id}`,
 
         {
 

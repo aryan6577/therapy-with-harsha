@@ -236,7 +236,7 @@ console.log(
 
       await axios.put(
 
-        `http://localhost:5000/api/appointment/approve/${appointment._id}`,
+        `${API_URL}/api/appointment/approve/${appointment._id}`,
 
         {},
 
@@ -343,7 +343,7 @@ console.log(
 
       await axios.put(
 
-        `http://localhost:5000/api/appointment/verify-payment/${selectedAppointment._id}`,
+        `${API_URL}/api/appointment/verify-payment/${selectedAppointment._id}`,
 
         {},
 
@@ -413,7 +413,7 @@ console.log(
 
       await axios.put(
 
-        `http://localhost:5000/api/appointment/reject/${selectedAppointment._id}`,
+        `${API_URL}/api/appointment/reject/${selectedAppointment._id}`,
 
         {
 
@@ -492,7 +492,7 @@ console.log(
 
       await axios.put(
 
-        `http://localhost:5000/api/appointment/reschedule/${selectedAppointment._id}`,
+        `${API_URL}/api/appointment/reschedule/${selectedAppointment._id}`,
 
         {
 

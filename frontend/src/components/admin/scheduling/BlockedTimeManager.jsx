@@ -46,7 +46,7 @@ function BlockedTimeManager() {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/blocked-slot"
+        "${API_URL}/api/blocked-slot"
       );
 
       if (res.data.success) {
@@ -118,7 +118,7 @@ function BlockedTimeManager() {
 
       const res = await axios.post(
 
-        "http://localhost:5000/api/blocked-slot",
+        "${API_URL}/api/blocked-slot",
 
         form,
 
@@ -184,7 +184,7 @@ function BlockedTimeManager() {
 
       await axios.delete(
 
-        `http://localhost:5000/api/blocked-slot/${id}`,
+        `${API_URL}/api/blocked-slot/${id}`,
 
         {
 

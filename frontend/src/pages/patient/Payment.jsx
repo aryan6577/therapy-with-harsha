@@ -45,7 +45,7 @@ function Payment() {
 
 const appointmentRes =
   await axios.get(
-    `http://localhost:5000/api/appointment/${id}`,
+    `${API_URL}/api/appointment/${id}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -56,7 +56,7 @@ const appointmentRes =
       const settingsRes =
         await axios.get(
 
-          "http://localhost:5000/api/settings"
+          "${API_URL}/api/settings"
 
         );
 
@@ -164,7 +164,7 @@ const appointmentRes =
       const token = localStorage.getItem("token");
 
 await axios.post(
-  `http://localhost:5000/api/appointment/submit-payment/${id}`,
+  `${API_URL}/api/appointment/submit-payment/${id}`,
   formData,
   {
     headers: {

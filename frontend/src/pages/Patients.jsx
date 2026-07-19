@@ -20,7 +20,7 @@ const loadPatients = async () => {
 
     const res = await axios.get(
 
-      "http://localhost:5000/api/admin/patients",
+      "${API_URL}/api/admin/patients",
 
       {
 
@@ -89,7 +89,7 @@ Are you absolutely sure?`
 
     const res = await axios.delete(
 
-      `http://localhost:5000/api/admin/patients/${patient.user._id}`,
+      `${API_URL}/api/admin/patients/${patient.user._id}`,
 
       {
 

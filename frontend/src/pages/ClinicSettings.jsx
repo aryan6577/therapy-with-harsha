@@ -34,7 +34,7 @@ const [uploadingQr, setUploadingQr] =
   const loadSettings = async () => {
     try {
       const res = await axios.get(
-  "http://localhost:5000/api/settings",
+  "${API_URL}/api/settings",
   {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -59,7 +59,7 @@ const saveSettings = async () => {
 
     const res = await axios.put(
 
-      "http://localhost:5000/api/settings",
+      "${API_URL}/api/settings",
 
       settings,
 
@@ -126,7 +126,7 @@ const saveSettings = async () => {
 
     const res = await axios.post(
 
-      "http://localhost:5000/api/settings/upload-qr",
+      "${API_URL}/api/settings/upload-qr",
 
       formData,
 

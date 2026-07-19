@@ -81,7 +81,7 @@ function BookAppointment() {
 
       const res =
         await axios.get(
-          "http://localhost:5000/api/settings"
+          "${API_URL}/api/settings"
         );
 
       if (res.data.success) {
@@ -111,7 +111,7 @@ function BookAppointment() {
 
         const res =
           await axios.get(
-            "http://localhost:5000/api/availability"
+            "${API_URL}/api/availability"
           );
 
         if (res.data.success) {
@@ -141,7 +141,7 @@ function BookAppointment() {
 
         const res =
           await axios.get(
-            "http://localhost:5000/api/holiday"
+            "${API_URL}/api/holiday"
           );
 
         if (res.data.success) {
@@ -171,7 +171,7 @@ function BookAppointment() {
 
         const res =
           await axios.get(
-            "http://localhost:5000/api/vacation"
+            "${API_URL}/api/vacation"
           );
 
         if (res.data.success) {
@@ -201,7 +201,7 @@ function BookAppointment() {
 
         const res =
           await axios.get(
-            "http://localhost:5000/api/blocked-slot"
+            "${API_URL}/api/blocked-slot"
           );
 
         if (res.data.success) {
@@ -506,7 +506,7 @@ function BookAppointment() {
       const bookedRes =
         await axios.get(
 
-          `http://localhost:5000/api/appointment/booked-slots/${date}`
+          `${API_URL}/api/appointment/booked-slots/${date}`
 
         );
 
@@ -614,7 +614,7 @@ function BookAppointment() {
       const userRes =
         await axios.get(
 
-          "http://localhost:5000/api/auth/me",
+          "${API_URL}/api/auth/me",
 
           {
 
@@ -651,7 +651,7 @@ function BookAppointment() {
         const profileRes =
           await axios.get(
 
-            "http://localhost:5000/api/patient/profile",
+            "${API_URL}/api/patient/profile",
 
             {
 
@@ -690,7 +690,7 @@ function BookAppointment() {
       const response =
         await axios.post(
 
-          "http://localhost:5000/api/appointment/book",
+          "${API_URL}/api/appointment/book",
 
           {
 

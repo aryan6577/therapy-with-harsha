@@ -18,7 +18,7 @@ function AdminForgotPassword() {
       setLoading(true);
 
       const res = await axios.post(
-  "http://localhost:5000/api/password/forgot",
+  "${API_URL}/api/password/forgot",
   {
     email,
     role: "admin",

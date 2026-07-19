@@ -15,7 +15,7 @@ function Profile() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/patient/profile",
+        "${API_URL}/api/patient/profile",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -51,7 +51,7 @@ function Profile() {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        "http://localhost:5000/api/patient/profile",
+        "${API_URL}/api/patient/profile",
         profile,
         {
           headers: {

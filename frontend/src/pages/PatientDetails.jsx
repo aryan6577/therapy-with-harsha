@@ -24,7 +24,7 @@ function PatientDetails() {
     try {
 
       const res = await axios.get(
-        `http://localhost:5000/api/admin/patients/${id}`
+        `${API_URL}/api/admin/patients/${id}`
       );
 
       setPatient(res.data);

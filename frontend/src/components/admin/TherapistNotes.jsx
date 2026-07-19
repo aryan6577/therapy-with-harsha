@@ -20,7 +20,7 @@ function TherapistNotes({ patientId }) {
 
   const loadNotes = async () => {
     const res = await axios.get(
-      `http://localhost:5000/api/notes/${patientId}`
+      `${API_URL}/api/notes/${patientId}`
     );
 
     setNotes(res.data);
@@ -28,7 +28,7 @@ function TherapistNotes({ patientId }) {
 
   const saveNote = async () => {
     await axios.post(
-      "http://localhost:5000/api/notes",
+      "${API_URL}/api/notes",
       {
         patient: patientId,
         ...form,

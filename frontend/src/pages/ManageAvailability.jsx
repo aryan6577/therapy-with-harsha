@@ -21,7 +21,7 @@ function ManageAvailability() {
   const loadAvailability = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/availability"
+        "${API_URL}/api/availability"
       );
 
       if (res.data.success) {
@@ -75,7 +75,7 @@ function ManageAvailability() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/availability/save",
+        "${API_URL}/api/availability/save",
         item
       );
 

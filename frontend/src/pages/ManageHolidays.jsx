@@ -39,7 +39,7 @@ function ManageHolidays() {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/holiday"
+        "${API_URL}/api/holiday"
       );
 
       if (res.data.success) {
@@ -74,7 +74,7 @@ function ManageHolidays() {
 
       const res = await axios.post(
 
-        "http://localhost:5000/api/holiday",
+        "${API_URL}/api/holiday",
 
         {
 
@@ -136,7 +136,7 @@ function ManageHolidays() {
 
       await axios.delete(
 
-        `http://localhost:5000/api/holiday/${id}`,
+        `${API_URL}/api/holiday/${id}`,
 
         {
 

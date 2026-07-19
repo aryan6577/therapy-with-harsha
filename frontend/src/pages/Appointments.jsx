@@ -2,8 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./admin/Appointments.css";
-function Appointments() {
 import API_URL from "../config";
+function Appointments() {
+
   const navigate = useNavigate();
 
   // =====================================================
@@ -515,7 +516,7 @@ import API_URL from "../config";
 
       await axios.put(
 
-        `http://localhost:5000/api/appointment/approve/${id}`,
+        `${API_URL}/api/appointment/approve/${id}`,
 
         {},
 
@@ -593,7 +594,7 @@ import API_URL from "../config";
 
       await axios.put(
 
-        `http://localhost:5000/api/appointment/reject/${id}`,
+        `${API_URL}/api/appointment/reject/${id}`,
 
         {
 
@@ -665,7 +666,7 @@ import API_URL from "../config";
 
       await axios.put(
 
-        `http://localhost:5000/api/appointment/complete/${id}`,
+        `${API_URL}/api/appointment/complete/${id}`,
 
         {},
 
@@ -733,7 +734,7 @@ import API_URL from "../config";
 
       await axios.delete(
 
-        `http://localhost:5000/api/appointment/${id}`,
+        `${API_URL}/api/appointment/${id}`,
 
         {
 
@@ -816,7 +817,7 @@ import API_URL from "../config";
 
       await axios.put(
 
-        `http://localhost:5000/api/appointment/verify-payment/${selectedAppointment._id}`,
+        `${API_URL}/api/appointment/verify-payment/${selectedAppointment._id}`,
 
         {},
 
@@ -887,7 +888,7 @@ import API_URL from "../config";
 
       await axios.put(
 
-        `http://localhost:5000/api/appointment/reject-payment/${selectedAppointment._id}`,
+        `${API_URL}/api/appointment/reject-payment/${selectedAppointment._id}`,
 
         {
 
