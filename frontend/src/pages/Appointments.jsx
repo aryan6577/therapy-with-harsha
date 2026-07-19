@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./admin/Appointments.css";
 function Appointments() {
-
+import API_URL from "../config";
   const navigate = useNavigate();
 
   // =====================================================
@@ -102,7 +102,7 @@ function Appointments() {
 
       const response = await axios.get(
 
-        "http://localhost:5000/api/appointment",
+        `${API_URL}/api/appointment`,
 
         {
 
