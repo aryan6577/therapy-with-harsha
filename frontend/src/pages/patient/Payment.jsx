@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../utils/axiosInstance";
 import { useNavigate, useParams } from "react-router-dom";
 
 function Payment() {
@@ -45,20 +45,15 @@ function Payment() {
 
 const appointmentRes =
   await axios.get(
-    `${API_URL}/api/appointment/${id}`,
+    `/appointment/${id}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     }
   );
-
       const settingsRes =
-        await axios.get(
-
-          `${API_URL}/api/settings"
-
-        );
+  await axios.get("/settings");
 
       setAppointment(
         appointmentRes.data.appointment
@@ -164,7 +159,7 @@ const appointmentRes =
       const token = localStorage.getItem("token");
 
 await axios.post(
-  `${API_URL}/api/appointment/submit-payment/${id}`,
+  `/appointment/submit-payment/${id}`,
   formData,
   {
     headers: {
