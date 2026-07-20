@@ -56,7 +56,7 @@ const appointmentRes =
       const settingsRes =
         await axios.get(
 
-          "${API_URL}/api/settings"
+          `${API_URL}/api/settings"
 
         );
 

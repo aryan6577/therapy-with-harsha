@@ -24,7 +24,7 @@ function VerifyOTP() {
     try {
 
       const res = await axios.post(
-  "${API_URL}/api/password/verify-otp",
+  `${API_URL}/api/password/verify-otp",
   {
     email,
     otp,

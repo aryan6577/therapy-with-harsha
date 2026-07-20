@@ -57,7 +57,7 @@ function ClinicalNotes() {
   const saveNote = async () => {
     try {
       await axios.post(
-        "${API_URL}/api/clinical/save",
+        `${API_URL}/api/clinical/save",
         {
           patient: appointment.patient._id,
           appointment: appointment._id,

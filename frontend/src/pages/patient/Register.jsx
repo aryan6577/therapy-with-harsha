@@ -102,7 +102,7 @@ function Register() {
       setLoading(true);
 
       const res = await axios.post(
-        "${API_URL}/api/auth/register",
+        `${API_URL}/api/auth/register",
         {
           fullName: formData.fullName.trim(),
           email: formData.email.trim().toLowerCase(),

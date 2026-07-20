@@ -1336,7 +1336,7 @@ Click below to join your online session.
 
 <a
 
-href="${meet.meetLink}"
+href="${meet.meetLink}`
 
 style="
 display:inline-block;
@@ -1484,7 +1484,7 @@ ${appointment.sessionType}
 <p>
 
 <a
-href="${meet.meetLink}"
+href="${meet.meetLink}`
 style="
 display:inline-block;
 padding:14px 22px;

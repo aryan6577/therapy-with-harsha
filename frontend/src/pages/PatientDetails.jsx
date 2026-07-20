@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import AdminLayout from "../components/admin/AdminLayout";
 
 function PatientDetails() {
@@ -24,7 +24,7 @@ function PatientDetails() {
     try {
 
       const res = await axios.get(
-        `${API_URL}/api/admin/patients/${id}`
+        `/admin/patients/${id}`
       );
 
       setPatient(res.data);

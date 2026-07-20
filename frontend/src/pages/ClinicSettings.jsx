@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
+import API_URL from "../config";
 import AdminLayout from "../components/admin/AdminLayout";
 
 function ClinicSettings() {
@@ -34,7 +35,7 @@ const [uploadingQr, setUploadingQr] =
   const loadSettings = async () => {
     try {
       const res = await axios.get(
-  "${API_URL}/api/settings",
+  `${API_URL}/api/settings`,
   {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -59,7 +60,7 @@ const saveSettings = async () => {
 
     const res = await axios.put(
 
-      "${API_URL}/api/settings",
+      `${API_URL}/api/settings`,
 
       settings,
 
@@ -126,7 +127,7 @@ const saveSettings = async () => {
 
     const res = await axios.post(
 
-      "${API_URL}/api/settings/upload-qr",
+      `${API_URL}/api/settings/upload-qr`,
 
       formData,
 

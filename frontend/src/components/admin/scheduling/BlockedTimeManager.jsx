@@ -46,7 +46,7 @@ function BlockedTimeManager() {
     try {
 
       const res = await axios.get(
-        "${API_URL}/api/blocked-slot"
+        `${API_URL}/api/blocked-slot"
       );
 
       if (res.data.success) {
@@ -118,7 +118,7 @@ function BlockedTimeManager() {
 
       const res = await axios.post(
 
-        "${API_URL}/api/blocked-slot",
+        `${API_URL}/api/blocked-slot",
 
         form,
 

@@ -28,7 +28,7 @@ function TherapistNotes({ patientId }) {
 
   const saveNote = async () => {
     await axios.post(
-      "${API_URL}/api/notes",
+      `${API_URL}/api/notes",
       {
         patient: patientId,
         ...form,

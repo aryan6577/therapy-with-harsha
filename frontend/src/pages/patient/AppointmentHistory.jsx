@@ -14,7 +14,7 @@ function AppointmentHistory() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "${API_URL}/api/appointment",
+        `${API_URL}/api/appointment",
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -65,7 +65,7 @@ function Dashboard() {
         localStorage.getItem("token");
 
       const res = await axios.get(
-        "${API_URL}/api/patient/profile",
+        `${API_URL}/api/patient/profile",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -142,7 +142,7 @@ if (res.data.profile) {
         localStorage.getItem("token");
 
       const res = await axios.get(
-        "${API_URL}/api/appointment",
+        `${API_URL}/api/appointment",
         {
           headers: {
             Authorization: `Bearer ${token}`,

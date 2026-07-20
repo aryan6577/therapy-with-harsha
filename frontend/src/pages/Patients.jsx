@@ -20,7 +20,7 @@ const loadPatients = async () => {
 
     const res = await axios.get(
 
-      "${API_URL}/api/admin/patients",
+      `${API_URL}/api/admin/patients",
 
       {
 

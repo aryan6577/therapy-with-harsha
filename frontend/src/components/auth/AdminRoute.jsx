@@ -5,7 +5,7 @@ function AdminRoute({ children }) {
   const token = localStorage.getItem("token");
 
   const user = JSON.parse(
-    localStorage.getItem("user") || "{}"
+    localStorage.getItem("user") || "{}`
   );
 
   // Not logged in

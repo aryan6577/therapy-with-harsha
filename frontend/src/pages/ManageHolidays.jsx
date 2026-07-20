@@ -39,7 +39,7 @@ function ManageHolidays() {
     try {
 
       const res = await axios.get(
-        "${API_URL}/api/holiday"
+        `${API_URL}/api/holiday"
       );
 
       if (res.data.success) {
@@ -74,7 +74,7 @@ function ManageHolidays() {
 
       const res = await axios.post(
 
-        "${API_URL}/api/holiday",
+        `${API_URL}/api/holiday",
 
         {
 

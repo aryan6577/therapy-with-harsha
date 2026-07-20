@@ -94,7 +94,7 @@ function Testimonials() {
                 marginBottom: "25px",
               }}
             >
-              "{item.text}"
+              "{item.text}`
             </p>
 
             <h4

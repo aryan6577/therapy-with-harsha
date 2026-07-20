@@ -21,7 +21,7 @@ function ForgotPassword() {
       setLoading(true);
 
       await axios.post(
-  "${API_URL}/api/password/forgot",
+  `${API_URL}/api/password/forgot",
   {
     email,
     role: "patient",

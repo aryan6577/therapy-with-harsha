@@ -39,7 +39,7 @@ function AdminResetPassword() {
       setLoading(true);
 
       const res = await axios.post(
-  "${API_URL}/api/password/reset",
+  `${API_URL}/api/password/reset",
   {
     email,
     password,
