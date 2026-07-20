@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 function ForgotPassword() {
@@ -21,7 +21,7 @@ function ForgotPassword() {
       setLoading(true);
 
       await axios.post(
-  `${API_URL}/api/password/forgot",
+  "/password/forgot",
   {
     email,
     role: "patient",
