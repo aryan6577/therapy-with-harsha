@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "../utils/axiosInstance";
+import axios from "../../utils/axiosInstance";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function AdminVerifyOTP() {
