@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 function AdminForgotPassword() {
@@ -18,7 +18,7 @@ function AdminForgotPassword() {
       setLoading(true);
 
       const res = await axios.post(
-  `${API_URL}/api/password/forgot",
+  "/password/forgot",
   {
     email,
     role: "admin",
