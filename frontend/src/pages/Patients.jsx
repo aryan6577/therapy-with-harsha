@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import AdminLayout from "../components/admin/AdminLayout";
 
@@ -19,20 +19,13 @@ const loadPatients = async () => {
     const token = localStorage.getItem("token");
 
     const res = await axios.get(
-
-      `${API_URL}/api/admin/patients",
-
-      {
-
-        headers: {
-
-          Authorization: `Bearer ${token}`,
-
-        },
-
-      }
-
-    );
+  "/admin/patients",
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
     setPatients(res.data.patients);
 
@@ -88,21 +81,13 @@ Are you absolutely sure?`
     const token = localStorage.getItem("token");
 
     const res = await axios.delete(
-
-      `${API_URL}/api/admin/patients/${patient.user._id}`,
-
-      {
-
-        headers: {
-
-          Authorization: `Bearer ${token}`,
-
-        },
-
-      }
-
-    );
-
+  `/admin/patients/${patient.user._id}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
     alert(res.data.message);
 
     loadPatients();

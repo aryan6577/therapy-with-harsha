@@ -5,8 +5,8 @@ function PatientRoute({ children }) {
   const token = localStorage.getItem("token");
 
   const user = JSON.parse(
-    localStorage.getItem("user") || "{}`
-  );
+  localStorage.getItem("user") || "{}"
+);
 
   if (!token) {
     return <Navigate to="/login" replace />;

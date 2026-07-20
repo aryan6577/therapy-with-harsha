@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../../utils/axiosInstance";
 
 function VacationManager() {
 
@@ -45,8 +45,8 @@ function VacationManager() {
     try {
 
       const res = await axios.get(
-        `${API_URL}/api/vacation"
-      );
+  "/vacation"
+);
 
       if (res.data.success) {
 
@@ -99,22 +99,14 @@ function VacationManager() {
     try {
 
       const res = await axios.post(
-
-        `${API_URL}/api/vacation",
-
-        form,
-
-        {
-
-          headers: {
-
-            Authorization: `Bearer ${token}`,
-
-          },
-
-        }
-
-      );
+  "/vacation",
+  form,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       alert(res.data.message);
 
@@ -163,20 +155,13 @@ function VacationManager() {
     try {
 
       await axios.delete(
-
-        `${API_URL}/api/vacation/${id}`,
-
-        {
-
-          headers: {
-
-            Authorization: `Bearer ${token}`,
-
-          },
-
-        }
-
-      );
+  `/vacation/${id}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       alert("Vacation deleted successfully.");
 

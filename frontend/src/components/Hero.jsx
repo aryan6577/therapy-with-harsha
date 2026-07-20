@@ -15,8 +15,8 @@ const handleBookSession = () => {
   }
 
   const user = JSON.parse(
-    localStorage.getItem("user") || "{}`
-  );
+  localStorage.getItem("user") || "{}"
+);
 
   if (user.role === "admin") {
     navigate("/admin/dashboard");

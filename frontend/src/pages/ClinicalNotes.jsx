@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 
 function ClinicalNotes() {
   const { appointmentId } = useParams();
@@ -26,8 +26,8 @@ function ClinicalNotes() {
   const loadAppointment = async () => {
     try {
       const res = await axios.get(
-        `${API_URL}/api/appointment/${appointmentId}`
-      );
+  `/appointment/${appointmentId}`
+);
 
       setAppointment(res.data.appointment);
     } catch (err) {
@@ -38,8 +38,8 @@ function ClinicalNotes() {
   const loadClinicalNote = async () => {
     try {
       const res = await axios.get(
-        `${API_URL}/api/clinical/${appointmentId}`
-      );
+  `/clinical/${appointmentId}`
+);
 
       if (res.data.note) {
         setNote(res.data.note);
@@ -57,13 +57,13 @@ function ClinicalNotes() {
   const saveNote = async () => {
     try {
       await axios.post(
-        `${API_URL}/api/clinical/save",
-        {
-          patient: appointment.patient._id,
-          appointment: appointment._id,
-          ...note,
-        }
-      );
+  "/clinical/save",
+  {
+    patient: appointment.patient._id,
+    appointment: appointment._id,
+    ...note,
+  }
+);
 
       alert("Clinical Note Saved Successfully");
     } catch (err) {
