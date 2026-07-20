@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function VerifyOTP() {
@@ -24,7 +24,7 @@ function VerifyOTP() {
     try {
 
       const res = await axios.post(
-  `${API_URL}/api/password/verify-otp",
+  "/password/verify-otp",
   {
     email,
     otp,
