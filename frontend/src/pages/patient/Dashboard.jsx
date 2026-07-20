@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
@@ -65,13 +65,13 @@ function Dashboard() {
         localStorage.getItem("token");
 
       const res = await axios.get(
-        `${API_URL}/api/patient/profile",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  "/patient/profile",
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
       console.log("PROFILE RESPONSE:", res.data);
 
       setProfileExists(
@@ -142,13 +142,13 @@ if (res.data.profile) {
         localStorage.getItem("token");
 
       const res = await axios.get(
-        `${API_URL}/api/appointment",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  "/appointment",
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       const appointments =
         res.data.appointments.filter(
