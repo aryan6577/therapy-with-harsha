@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../utils/axiosInstance";
 
 function BookAppointment() {
 
@@ -81,7 +81,7 @@ function BookAppointment() {
 
       const res =
         await axios.get(
-          `${API_URL}/api/settings"
+          "/settings"
         );
 
       if (res.data.success) {
@@ -111,7 +111,7 @@ function BookAppointment() {
 
         const res =
           await axios.get(
-            `${API_URL}/api/availability"
+            "/availability"
           );
 
         if (res.data.success) {
@@ -141,7 +141,7 @@ function BookAppointment() {
 
         const res =
           await axios.get(
-            `${API_URL}/api/holiday"
+           "/holiday"
           );
 
         if (res.data.success) {
@@ -171,7 +171,7 @@ function BookAppointment() {
 
         const res =
           await axios.get(
-            `${API_URL}/api/vacation"
+            "/vacation"
           );
 
         if (res.data.success) {
@@ -201,7 +201,7 @@ function BookAppointment() {
 
         const res =
           await axios.get(
-            `${API_URL}/api/blocked-slot"
+            "/blocked-slot"
           );
 
         if (res.data.success) {
@@ -506,7 +506,7 @@ function BookAppointment() {
       const bookedRes =
         await axios.get(
 
-          `${API_URL}/api/appointment/booked-slots/${date}`
+          `/appointment/booked-slots/${date}`
 
         );
 
@@ -614,7 +614,7 @@ function BookAppointment() {
       const userRes =
         await axios.get(
 
-          `${API_URL}/api/auth/me",
+          "/auth/me",
 
           {
 
@@ -651,7 +651,7 @@ function BookAppointment() {
         const profileRes =
           await axios.get(
 
-            `${API_URL}/api/patient/profile",
+            "/patient/profile",
 
             {
 
@@ -690,7 +690,7 @@ function BookAppointment() {
       const response =
         await axios.post(
 
-          `${API_URL}/api/appointment/book",
+          "/appointment/book",
 
           {
 

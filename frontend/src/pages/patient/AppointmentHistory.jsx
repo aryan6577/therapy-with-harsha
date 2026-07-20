@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../utils/axiosInstance";
 
 function AppointmentHistory() {
   const [appointments, setAppointments] = useState([]);
@@ -14,13 +14,13 @@ function AppointmentHistory() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        `${API_URL}/api/appointment",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  "/appointment",
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       setAppointments(res.data.appointments || []);
     } catch (err) {
