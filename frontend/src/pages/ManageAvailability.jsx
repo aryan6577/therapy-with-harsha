@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 
 const days = [
   "Monday",
@@ -21,8 +21,8 @@ function ManageAvailability() {
   const loadAvailability = async () => {
     try {
       const res = await axios.get(
-        `${API_URL}/api/availability"
-      );
+  "/availability"
+);
 
       if (res.data.success) {
         setAvailability(res.data.availability || []);
@@ -75,9 +75,9 @@ function ManageAvailability() {
 
     try {
       const res = await axios.post(
-        `${API_URL}/api/availability/save",
-        item
-      );
+  "/availability/save",
+  item
+);
 
       alert(res.data.message);
 
