@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../utils/axiosInstance";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -38,13 +38,13 @@ const loadProfile = async () => {
     const token = localStorage.getItem("token");
 
     const res = await axios.get(
-      `${API_URL}/api/patient/profile",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+  "/patient/profile",
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
     const user = res.data.user;
 const profile = res.data.profile;
@@ -104,19 +104,14 @@ setFormData({
         localStorage.getItem("token");
 
       await axios.put(
-
-        `${API_URL}/api/patient/profile",
-
-        formData,
-
-        {
-          headers: {
-            Authorization:
-              `Bearer ${token}`,
-          },
-        }
-
-      );
+  "/patient/profile",
+  formData,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       alert(
         "Profile Saved Successfully"
