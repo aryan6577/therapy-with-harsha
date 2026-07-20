@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
-import API_URL from "../../config";
+import axios from "../../utils/axiosInstance";
+
 import { useNavigate } from "react-router-dom";
 
 function AdminLogin() {
@@ -17,12 +17,12 @@ function AdminLogin() {
 
     try {
       const res = await axios.post(
-  `${API_URL}/api/auth/login`,
-        {
-          email,
-          password,
-        }
-      );
+  "/auth/login",
+  {
+    email,
+    password,
+  }
+);
 
       if (res.data.user.role !== "admin") {
         alert("Please use the Patient Login page.");

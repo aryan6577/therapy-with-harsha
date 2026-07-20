@@ -1,7 +1,7 @@
 import { useState } from "react";
-import axios from "axios";
+import axios from "../../utils/axiosInstance";
 import { useNavigate, Link } from "react-router-dom";
-import API_URL from "../../config";
+
 function Login() {
   const navigate = useNavigate();
 
@@ -26,9 +26,9 @@ function Login() {
     try {
       // Login Request
       const res = await axios.post(
-        `${API_URL}/api/auth/login`,
-        formData
-      );
+  "/auth/login",
+  formData
+);
 
     // ==========================
 // Prevent Admin Login Here
@@ -63,7 +63,7 @@ localStorage.setItem(
 // ==========================
 
 const profileRes = await axios.get(
-  `${API_URL}/api/patient/profile`,
+  "/patient/profile",
   {
     headers: {
       Authorization: `Bearer ${res.data.token}`,

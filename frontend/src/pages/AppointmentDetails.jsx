@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { useNavigate, useParams } from "react-router-dom";
 
 function AppointmentDetails() {
@@ -25,24 +25,14 @@ function AppointmentDetails() {
       const token =
         localStorage.getItem("token");
 
-      const res =
-        await axios.get(
-
-          `${API_URL}/api/appointment/${id}`,
-
-          {
-
-            headers: {
-
-              Authorization:
-                `Bearer ${token}`,
-
-            },
-
-          }
-
-        );
-
+      const res = await axios.get(
+  `/appointment/${id}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
       if (res.data.success) {
 
         setAppointment(
@@ -449,7 +439,7 @@ function AppointmentDetails() {
 
             <img
 
-              src={`${API_URL}/${appointment.paymentScreenshot}`}
+              src={`https://therapy-with-harsha.onrender.com/${appointment.paymentScreenshot}`}
 
               alt="Payment"
 
@@ -613,7 +603,7 @@ function AppointmentDetails() {
 
                 await axios.put(
 
-                  `${API_URL}/api/appointment/approve/${appointment._id}`,
+                  `/appointment/approve/${appointment._id}`,
 
                   {},
 
@@ -667,7 +657,7 @@ function AppointmentDetails() {
 
                 await axios.put(
 
-                  `${API_URL}/api/appointment/reject/${appointment._id}`,
+                  `/appointment/reject/${appointment._id}`,
 
                   {reason},
 
@@ -713,7 +703,7 @@ function AppointmentDetails() {
 
                 await axios.put(
 
-                  `${API_URL}/api/appointment/verify-payment/${appointment._id}`,
+                  `/appointment/verify-payment/${appointment._id}`,
 
                   {},
 
@@ -787,7 +777,7 @@ function AppointmentDetails() {
 
                 await axios.put(
 
-                  `${API_URL}/api/appointment/complete/${appointment._id}`,
+                  `/appointment/complete/${appointment._id}`,
 
                   {},
 

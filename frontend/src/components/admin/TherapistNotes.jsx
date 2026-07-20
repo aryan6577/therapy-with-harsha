@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 
 function TherapistNotes({ patientId }) {
   const [notes, setNotes] = useState([]);
@@ -20,20 +20,20 @@ function TherapistNotes({ patientId }) {
 
   const loadNotes = async () => {
     const res = await axios.get(
-      `${API_URL}/api/notes/${patientId}`
-    );
+  `/notes/${patientId}`
+);
 
     setNotes(res.data);
   };
 
   const saveNote = async () => {
     await axios.post(
-      `${API_URL}/api/notes",
-      {
-        patient: patientId,
-        ...form,
-      }
-    );
+  "/notes",
+  {
+    patient: patientId,
+    ...form,
+  }
+);
 
     alert("Note Saved");
 

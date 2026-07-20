@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import API_URL from "../config";
+import axios from "../utils/axiosInstance";
 
 import AdminLayout from "../components/admin/AdminLayout";
 
@@ -95,25 +94,16 @@ function AdminDashboard() {
 
       };
 
-      const appointmentRes =
-        await axios.get(
+      await axios.get(
+  "/appointment",
+  config
+);
 
-          `${API_URL}/api/appointment`,
-
-          config
-
-        );
-
-      const patientRes =
-        await axios.get(
-
-          `${API_URL}/api/admin/patients`,
-
-          config
-
-        );
-      console.log("Appointment API Response");
-console.log(appointmentRes);
+const patientRes =
+  await axios.get(
+    "/admin/patients",
+    config
+  );
 
 console.log("Appointments Array");
 console.log(appointmentRes.data.appointments);
@@ -236,7 +226,7 @@ console.log(
 
       await axios.put(
 
-        `${API_URL}/api/appointment/approve/${appointment._id}`,
+        `/appointment/approve/${appointment._id}`,
 
         {},
 
@@ -343,7 +333,7 @@ console.log(
 
       await axios.put(
 
-        `${API_URL}/api/appointment/verify-payment/${selectedAppointment._id}`,
+        `/appointment/verify-payment/${selectedAppointment._id}`,
 
         {},
 
@@ -413,7 +403,7 @@ console.log(
 
       await axios.put(
 
-        `${API_URL}/api/appointment/reject/${selectedAppointment._id}`,
+        `/appointment/reject/${selectedAppointment._id}`,
 
         {
 
@@ -492,7 +482,7 @@ console.log(
 
       await axios.put(
 
-        `${API_URL}/api/appointment/reschedule/${selectedAppointment._id}`,
+        `/appointment/reschedule/${selectedAppointment._id}`,
 
         {
 

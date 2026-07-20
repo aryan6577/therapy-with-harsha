@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 function AdminLogin() {
@@ -30,9 +30,9 @@ function AdminLogin() {
     try {
 
       const res = await axios.post(
-        `${API_URL}/api/auth/login",
-        formData
-      );
+  "/auth/login",
+  formData
+);
 
       if (res.data.user.role !== "admin") {
         alert("This is not a therapist account.");
