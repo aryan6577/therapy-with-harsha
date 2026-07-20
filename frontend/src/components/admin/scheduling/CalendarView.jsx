@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../../utils/axiosInstance";
 
 function CalendarView() {
 
@@ -105,48 +105,24 @@ function CalendarView() {
         const token =
           localStorage.getItem("token");
 
-        const [
+const [
+  holidayRes,
+  vacationRes,
+  blockedRes,
+  appointmentRes,
+] = await Promise.all([
+  axios.get("/holiday"),
 
-          holidayRes,
+  axios.get("/vacation"),
 
-          vacationRes,
+  axios.get("/blocked-slot"),
 
-          blockedRes,
-
-          appointmentRes,
-
-        ] = await Promise.all([
-
-          axios.get(
-            `${API_URL}/api/holiday"
-          ),
-
-          axios.get(
-            `${API_URL}/api/vacation"
-          ),
-
-          axios.get(
-            `${API_URL}/api/blocked-slot"
-          ),
-
-          axios.get(
-
-            `${API_URL}/api/appointment",
-
-            {
-
-              headers: {
-
-                Authorization:
-                  `Bearer ${token}`,
-
-              },
-
-            }
-
-          ),
-
-        ]);
+  axios.get("/appointment", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }),
+]);
 
         if (
           holidayRes.data.success
