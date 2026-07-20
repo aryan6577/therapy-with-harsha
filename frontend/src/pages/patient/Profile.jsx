@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../utils/axiosInstance";
 
 function Profile() {
   const [profile, setProfile] = useState({});
@@ -15,13 +15,13 @@ function Profile() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        `${API_URL}/api/patient/profile",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  "/patient/profile",
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       setProfile({
   ...(res.data.profile || {}),
@@ -51,14 +51,14 @@ function Profile() {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `${API_URL}/api/patient/profile",
-        profile,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  "/patient/profile",
+  profile,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       alert("Profile updated successfully.");
     } catch (err) {
