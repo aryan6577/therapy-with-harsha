@@ -94,7 +94,7 @@ function AdminDashboard() {
 
       };
 
-      await axios.get(
+      const appointmentRes = await axios.get(
   "/appointment",
   config
 );
