@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../../utils/axiosInstance";
 
 function BlockedTimeManager() {
 
@@ -46,8 +46,8 @@ function BlockedTimeManager() {
     try {
 
       const res = await axios.get(
-        `${API_URL}/api/blocked-slot"
-      );
+  "/blocked-slot"
+);
 
       if (res.data.success) {
 
@@ -117,23 +117,14 @@ function BlockedTimeManager() {
     try {
 
       const res = await axios.post(
-
-        `${API_URL}/api/blocked-slot",
-
-        form,
-
-        {
-
-          headers: {
-
-            Authorization: `Bearer ${token}`,
-
-          },
-
-        }
-
-      );
-
+  "/blocked-slot",
+  form,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
       alert(res.data.message);
 
       setForm({
@@ -183,20 +174,13 @@ function BlockedTimeManager() {
     try {
 
       await axios.delete(
-
-        `${API_URL}/api/blocked-slot/${id}`,
-
-        {
-
-          headers: {
-
-            Authorization: `Bearer ${token}`,
-
-          },
-
-        }
-
-      );
+  `/blocked-slot/${id}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       alert("Blocked slot deleted.");
 
