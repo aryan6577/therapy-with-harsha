@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../utils/axiosInstance";
 
 function Register() {
   const navigate = useNavigate();
@@ -102,7 +102,7 @@ function Register() {
       setLoading(true);
 
       const res = await axios.post(
-        `${API_URL}/api/auth/register",
+        "/auth/register",
         {
           fullName: formData.fullName.trim(),
           email: formData.email.trim().toLowerCase(),
