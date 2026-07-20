@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 
 function ManageHolidays() {
 
@@ -39,8 +39,8 @@ function ManageHolidays() {
     try {
 
       const res = await axios.get(
-        `${API_URL}/api/holiday"
-      );
+  "/holiday"
+);
 
       if (res.data.success) {
 
@@ -73,28 +73,17 @@ function ManageHolidays() {
     try {
 
       const res = await axios.post(
-
-        `${API_URL}/api/holiday",
-
-        {
-
-          date,
-
-          reason,
-
-        },
-
-        {
-
-          headers: {
-
-            Authorization: `Bearer ${token}`,
-
-          },
-
-        }
-
-      );
+  "/holiday",
+  {
+    date,
+    reason,
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       alert(res.data.message);
 
@@ -135,20 +124,13 @@ function ManageHolidays() {
     try {
 
       await axios.delete(
-
-        `${API_URL}/api/holiday/${id}`,
-
-        {
-
-          headers: {
-
-            Authorization: `Bearer ${token}`,
-
-          },
-
-        }
-
-      );
+  `/holiday/${id}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       alert("Holiday deleted successfully.");
 
