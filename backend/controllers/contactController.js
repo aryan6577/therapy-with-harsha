@@ -67,10 +67,10 @@ exports.sendContactMessage = async (
 
     await sendEmail({
 
-      to: process.env.EMAIL_USER,
+  to: process.env.ADMIN_EMAIL,
 
-      subject:
-        "🔔 New Contact Request - Therapy With Harsha",
+  subject:
+    "🔔 New Contact Request - Therapy With Harsha",
 
       html: `
 
