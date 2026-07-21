@@ -1,7 +1,7 @@
 const PasswordResetOTP = require("../models/PasswordResetOTP");
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
-const nodemailer = require("nodemailer");
+const { sendEmail } = require("../services/emailService");
 
 // ======================================================
 // Mail Transport

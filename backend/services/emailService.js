@@ -25,7 +25,9 @@ const sendEmail = async ({ to, subject, html }) => {
       });
 
     console.log("✅ Email sent successfully");
-    console.log(result);
+    console.log("========== BREVO RESPONSE ==========");
+console.dir(result, { depth: null });
+console.log("===================================");
 
     return true;
   } catch (err) {
