@@ -39,9 +39,8 @@ const sendEmail = async ({ to, subject, html }) => {
     console.log("Recipient:", to);
     console.log("Subject:", subject);
 
-    console.log("Verifying SMTP connection...");
-    await transporter.verify();
-    console.log("✅ SMTP verified successfully.");
+    
+    
 
     console.log("Sending email...");
     const info = await transporter.sendMail({
