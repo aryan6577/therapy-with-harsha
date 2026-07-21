@@ -15,19 +15,31 @@ console.log(
 );
 
 // ======================================
-// SMTP TRANSPORTER
+// BREVO SMTP TRANSPORTER
 // ======================================
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
+  host: "smtp-relay.brevo.com",
   port: 587,
   secure: false,
-  requireTLS: true,
 
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+});
+
+// ======================================
+// VERIFY CONNECTION ON SERVER START
+// ======================================
+
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("❌ Brevo SMTP Connection Failed");
+    console.error(error);
+  } else {
+    console.log("✅ Brevo SMTP Connected Successfully");
+  }
 });
 
 // ======================================
@@ -41,12 +53,8 @@ const sendEmail = async ({ to, subject, html }) => {
     console.log("Recipient:", to);
     console.log("Subject:", subject);
 
-    
-    
-
-    console.log("Sending email...");
     const info = await transporter.sendMail({
-      from: `"Therapy With Harsha" <${process.env.EMAIL_USER}>`,
+      from: '"Therapy With Harsha" <therapy.harsha@gmail.com>',
       to,
       subject,
       html,
@@ -73,7 +81,6 @@ const sendEmail = async ({ to, subject, html }) => {
     console.error(err);
     console.error("====================================");
 
-    // Throw the error so the controller knows email failed
     throw err;
   }
 };
