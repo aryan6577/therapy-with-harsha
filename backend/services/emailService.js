@@ -1,44 +1,27 @@
-const { BrevoClient } = require("@getbrevo/brevo");
+const { Resend } = require("resend");
 
-const brevo = new BrevoClient({
-  apiKey: process.env.BREVO_API_KEY,
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEmail = async ({ to, subject, html }) => {
   try {
-    const result =
-      await brevo.transactionalEmails.sendTransacEmail({
-        sender: {
-          name: "Therapy With Harsha",
-          email: process.env.ADMIN_EMAIL,
-        },
+    const { data, error } = await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to,
+      subject,
+      html,
+    });
 
-        to: [
-          {
-            email: to,
-          },
-        ],
-
-        subject,
-
-        htmlContent: html,
-      });
+    if (error) {
+      console.error("❌ Resend Error:", error);
+      throw error;
+    }
 
     console.log("✅ Email sent successfully");
-    console.log("========== BREVO RESPONSE ==========");
-console.dir(result, { depth: null });
-console.log("===================================");
+    console.log(data);
 
     return true;
   } catch (err) {
-    console.error("❌ Brevo API Error");
-
-    if (err.response) {
-      console.error(err.response);
-    } else {
-      console.error(err);
-    }
-
+    console.error(err);
     throw err;
   }
 };
