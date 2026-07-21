@@ -3,26 +3,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const { sendEmail } = require("../services/emailService");
 
-// ======================================================
-// Mail Transport
-// ======================================================
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-
-transporter.verify((error) => {
-  if (error) {
-    console.log("❌ Mail Transport Error");
-    console.log(error);
-  } else {
-    console.log("✅ Mail Server Ready");
-  }
-});
 
 // ======================================================
 // Send OTP
@@ -79,41 +60,40 @@ exports.sendOTP = async (req, res) => {
     });
 
     // Send Email
-    await transporter.sendMail({
-      from: `"Therapy With Harsha" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: "Password Reset OTP",
-      html: `
-        <div style="font-family:Arial;padding:25px">
-          <h2>Password Reset Request</h2>
+    await sendEmail({
+  to: email,
+  subject: "Password Reset OTP",
+  html: `
+    <div style="font-family:Arial;padding:25px">
+      <h2>Password Reset Request</h2>
 
-          <p>Your OTP is:</p>
+      <p>Your OTP is:</p>
 
-          <h1
-            style="
-              color:#47685F;
-              letter-spacing:8px;
-            "
-          >
-            ${otp}
-          </h1>
+      <h1
+        style="
+          color:#47685F;
+          letter-spacing:8px;
+        "
+      >
+        ${otp}
+      </h1>
 
-          <p>
-            This OTP will expire in
-            <strong>10 minutes</strong>.
-          </p>
+      <p>
+        This OTP will expire in
+        <strong>10 minutes</strong>.
+      </p>
 
-          <p>
-            If you didn't request this,
-            please ignore this email.
-          </p>
+      <p>
+        If you didn't request this,
+        please ignore this email.
+      </p>
 
-          <br>
+      <br>
 
-          <b>Therapy With Harsha</b>
-        </div>
-      `,
-    });
+      <b>Therapy With Harsha</b>
+    </div>
+  `,
+});
 
     console.log("✅ Email Sent");
 
