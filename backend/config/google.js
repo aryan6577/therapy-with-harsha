@@ -24,7 +24,11 @@ const oauth2Client = new google.auth.OAuth2(
 
 const tokenPath = path.join(__dirname, "../token/token.json");
 
-if (fs.existsSync(tokenPath)) {
+if (process.env.GOOGLE_TOKEN) {
+  oauth2Client.setCredentials(
+    JSON.parse(process.env.GOOGLE_TOKEN)
+  );
+} else if (fs.existsSync(tokenPath)) {
   oauth2Client.setCredentials(
     JSON.parse(fs.readFileSync(tokenPath))
   );

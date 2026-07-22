@@ -1590,7 +1590,10 @@ exports.submitPayment =
         });
 
       }
-
+      console.log("========== SUBMIT PAYMENT ==========");
+console.log("BODY:", req.body);
+console.log("FILE:", req.file);
+console.log("====================================");
       appointment.transactionId =
         req.body.transactionId;
 
