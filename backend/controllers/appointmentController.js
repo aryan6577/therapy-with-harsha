@@ -241,13 +241,72 @@ try {
 // ======================================
 
 try {
+
   await sendEmail({
+
     to: "therapy.harsha@gmail.com",
+
     subject: `New Appointment Request - ${patientDetails.fullName}`,
-    html: `...`
+
+    html: `
+
+<h2>New Appointment Request</h2>
+
+<p>
+
+A new appointment has been booked.
+
+</p>
+
+<p>
+
+<b>Patient :</b>
+${patientDetails.fullName}
+
+</p>
+
+<p>
+
+<b>Email :</b>
+${patientDetails.email}
+
+</p>
+
+<p>
+
+<b>Appointment ID :</b>
+${appointment.appointmentId}
+
+</p>
+
+<p>
+
+<b>Date :</b>
+${appointment.appointmentDate}
+
+</p>
+
+<p>
+
+<b>Time :</b>
+${appointment.appointmentTime}
+
+</p>
+
+<p>
+
+Please login to your dashboard to approve or reject this appointment.
+
+</p>
+
+`
+
   });
+
 } catch (err) {
+
   console.error("Admin email failed:", err);
+
 }
     return res.status(201).json({
 
@@ -505,14 +564,16 @@ const settings =
 // Email Patient - Appointment Approved
 // ======================================
 
-await sendEmail({
+try {
 
-  to: patient.email,
+  await sendEmail({
 
-  subject:
-    "Appointment Approved | Therapy With Harsha",
+    to: patient.email,
 
-  html: `
+    subject:
+      "Appointment Approved | Therapy With Harsha",
+
+    html: `
 
 <div style="
 font-family:Arial;
@@ -604,7 +665,13 @@ Thank you,
 
 `
 
-});
+  });
+
+} catch (err) {
+
+  console.error("Approval email failed:", err);
+
+}
 
     return res.json({
 
@@ -671,14 +738,16 @@ exports.rejectAppointment = async (
   appointment.patient
 );
 
-await sendEmail({
+try {
 
-  to: patient.email,
+  await sendEmail({
 
-  subject:
-    "Appointment Request Rejected",
+    to: patient.email,
 
-  html: `
+    subject:
+      "Appointment Request Rejected",
+
+    html: `
 
 <h2>Appointment Rejected</h2>
 
@@ -710,7 +779,13 @@ You may book another appointment from the website.
 
 `
 
-});
+  });
+
+} catch (err) {
+
+  console.error("Rejection email failed:", err);
+
+}
 
     return res.json({
 
@@ -791,14 +866,16 @@ exports.rescheduleAppointment =
   appointment.patient
 );
 
-await sendEmail({
+try {
 
-  to: patient.email,
+  await sendEmail({
 
-  subject:
-    "Appointment Rescheduled",
+    to: patient.email,
 
-  html: `
+    subject:
+      "Appointment Rescheduled",
+
+    html: `
 
 <h2>Appointment Rescheduled</h2>
 
@@ -838,7 +915,13 @@ Please attend according to the updated schedule.
 
 `
 
-});
+  });
+
+} catch (err) {
+
+  console.error("Reschedule email failed:", err);
+
+}
       return res.json({
 
         success: true,
@@ -1159,14 +1242,16 @@ exports.verifyPayment =
       // Send Confirmation Email
       // ======================================
 
-      await sendEmail({
+ try {
 
-        to: appointment.patient.email,
+  await sendEmail({
 
-        subject:
-          "Appointment Confirmed | Therapy With Harsha",
+    to: appointment.patient.email,
 
-        html: `
+    subject:
+      "Appointment Confirmed | Therapy With Harsha",
+
+    html: `
 
 <div style="
 font-family:Arial,sans-serif;
@@ -1249,7 +1334,6 @@ text-decoration:none;
 border-radius:8px;
 font-weight:bold;
 "
-
 >
 
 Join Google Meet
@@ -1284,21 +1368,29 @@ Regards,
 
 </div>
 
-        `,
+`,
 
-      });
+  });
+
+} catch (err) {
+
+  console.error("Patient confirmation email failed:", err);
+
+}
       // ======================================
 // Notify Harsha
 // ======================================
 
-await sendEmail({
+try {
 
-  to: "therapy.harsha@gmail.com",
+  await sendEmail({
 
-  subject:
-    `New Appointment Confirmed - ${appointment.patient.fullName}`,
+    to: "therapy.harsha@gmail.com",
 
-  html: `
+    subject:
+      `New Appointment Confirmed - ${appointment.patient.fullName}`,
+
+    html: `
 
 <div style="
 font-family:Arial,sans-serif;
@@ -1425,7 +1517,13 @@ Therapy With Harsha Website
 
 `
 
-});
+  });
+
+} catch (err) {
+
+  console.error("Admin confirmation email failed:", err);
+
+}
 
       return res.json({
 
@@ -1525,14 +1623,16 @@ console.log("====================================");
 // Notify Harsha
 // ======================================
 
-await sendEmail({
+try {
 
-  to: "therapy.harsha@gmail.com",
+  await sendEmail({
 
-  subject:
-    `Payment Submitted - ${patient.fullName}`,
+    to: "therapy.harsha@gmail.com",
 
-  html: `
+    subject:
+      `Payment Submitted - ${patient.fullName}`,
+
+    html: `
 
 <div style="
 font-family:Arial;
@@ -1619,7 +1719,13 @@ Please login to your dashboard to verify the payment screenshot.
 
 `
 
-});
+  });
+
+} catch (err) {
+
+  console.error("Payment notification email failed:", err);
+
+}
             return res.json({
 
         success: true,
