@@ -1572,11 +1572,12 @@ exports.rejectPayment = async (req, res) => {
 
     appointment.paymentStatus = "Rejected";
     appointment.paymentSubmitted = false;
-    appointment.paymentVerifiedAt = null;
-    appointment.paymentVerifiedBy = null;
-    appointment.paymentRejectionReason = req.body.reason || "";
-    appointment.paymentScreenshot = "";
+    appointment.paymentVerifiedAt = undefined;
+appointment.paymentVerifiedBy = "";
+    appointment.paymentRejectReason = req.body.reason || "";
     appointment.transactionId = "";
+appointment.paymentScreenshot = "";
+appointment.paymentScreenshotPublicId = "";
 
     await appointment.save();
 

@@ -74,15 +74,16 @@ const appointmentSchema = new mongoose.Schema(
     // ==========================
 
     paymentStatus: {
-      type: String,
-      enum: [
-        "Pending",
-        "Submitted",
-        "Paid",
-        "Refunded",
-      ],
-      default: "Pending",
-    },
+  type: String,
+  enum: [
+    "Pending",
+    "Submitted",
+    "Paid",
+    "Rejected",
+    "Refunded",
+  ],
+  default: "Pending",
+},
 
     paymentAmount: {
       type: Number,
