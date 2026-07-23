@@ -227,124 +227,28 @@ exports.bookAppointment = async (
 // Email to Patient
 // ======================================
 
-await sendEmail({
-
-  to: patientDetails.email,
-
-  subject: "Appointment Request Received | Therapy With Harsha",
-
-  html: `
-
-<h2>Appointment Request Received</h2>
-
-<p>Hello ${patientDetails.fullName},</p>
-
-<p>
-
-Your appointment request has been received successfully.
-
-</p>
-
-<p>
-
-Appointment ID :
-<b>${appointment.appointmentId}</b>
-
-</p>
-
-<p>
-
-Date :
-<b>${appointment.appointmentDate}</b>
-
-</p>
-
-<p>
-
-Time :
-<b>${appointment.appointmentTime}</b>
-
-</p>
-
-<p>
-
-Your appointment is currently waiting for approval by Harsha.
-
-</p>
-
-<p>
-
-Once approved, you will receive another email asking you to complete the payment.
-
-</p>
-
-`
-
-});
+try {
+  await sendEmail({
+    to: patientDetails.email,
+    subject: "Appointment Request Received | Therapy With Harsha",
+    html: `...`
+  });
+} catch (err) {
+  console.error("Patient email failed:", err);
+}
 // ======================================
 // Notify Harsha
 // ======================================
 
-await sendEmail({
-
-  to: "therapy.harsha@gmail.com",
-
-  subject: `New Appointment Request - ${patientDetails.fullName}`,
-
-  html: `
-
-<h2>New Appointment Request</h2>
-
-<p>
-
-A new appointment has been booked.
-
-</p>
-
-<p>
-
-<b>Patient :</b>
-${patientDetails.fullName}
-
-</p>
-
-<p>
-
-<b>Email :</b>
-${patientDetails.email}
-
-</p>
-
-<p>
-
-<b>Appointment ID :</b>
-${appointment.appointmentId}
-
-</p>
-
-<p>
-
-<b>Date :</b>
-${appointment.appointmentDate}
-
-</p>
-
-<p>
-
-<b>Time :</b>
-${appointment.appointmentTime}
-
-</p>
-
-<p>
-
-Please login to your dashboard to approve or reject this appointment.
-
-</p>
-
-`
-
-});
+try {
+  await sendEmail({
+    to: "therapy.harsha@gmail.com",
+    subject: `New Appointment Request - ${patientDetails.fullName}`,
+    html: `...`
+  });
+} catch (err) {
+  console.error("Admin email failed:", err);
+}
     return res.status(201).json({
 
       success: true,
