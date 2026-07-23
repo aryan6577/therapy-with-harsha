@@ -19,6 +19,7 @@ const {
   rescheduleAppointment,
   completeAppointment,
   verifyPayment,
+  rejectPayment,
   cancelAppointment,
   getBookedSlots,
   submitPayment,
@@ -122,5 +123,10 @@ router.put(
   verifyAdmin,
   verifyPayment
 );
-
+router.put(
+  "/reject-payment/:id",
+  verifyToken,
+  verifyAdmin,
+  rejectPayment
+);
 module.exports = router;

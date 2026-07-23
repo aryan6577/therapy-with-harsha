@@ -1553,7 +1553,71 @@ Therapy With Harsha Website
     }
 
 };
+// ===================================================
+// Reject Payment
+// ===================================================
 
+exports.rejectPayment = async (req, res) => {
+  try {
+    const appointment = await Appointment.findById(req.params.id).populate(
+      "patient"
+    );
+
+    if (!appointment) {
+      return res.status(404).json({
+        success: false,
+        message: "Appointment not found.",
+      });
+    }
+
+    appointment.paymentStatus = "Rejected";
+    appointment.paymentSubmitted = false;
+    appointment.paymentVerifiedAt = null;
+    appointment.paymentVerifiedBy = null;
+    appointment.paymentRejectionReason = req.body.reason || "";
+    appointment.paymentScreenshot = "";
+    appointment.transactionId = "";
+
+    await appointment.save();
+
+    try {
+      await sendEmail({
+        to: appointment.patient.email,
+        subject: "Payment Rejected | Therapy With Harsha",
+        html: `
+          <h2>Payment Rejected</h2>
+
+          <p>Hello ${appointment.patient.fullName},</p>
+
+          <p>Your submitted payment could not be verified.</p>
+
+          <p><b>Reason:</b> ${
+            req.body.reason || "Please contact the therapist."
+          }</p>
+
+          <p>Please upload a new payment screenshot from your dashboard.</p>
+
+          <p>Regards,<br><b>Therapy With Harsha</b></p>
+        `,
+      });
+    } catch (err) {
+      console.error("Payment rejection email failed:", err);
+    }
+
+    return res.json({
+      success: true,
+      message: "Payment rejected successfully.",
+      appointment,
+    });
+  } catch (err) {
+    console.error(err);
+
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error.",
+    });
+  }
+};
 // ===================================================
 // Submit Payment
 // ===================================================
