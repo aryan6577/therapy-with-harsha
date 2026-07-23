@@ -83,7 +83,7 @@ const appointmentSchema = new mongoose.Schema(
     "Refunded",
   ],
   default: "Pending",
-},
+}, 
 
     paymentAmount: {
       type: Number,
